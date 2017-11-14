@@ -1,0 +1,17 @@
+Board (with list of ships)
+-Coordinate
+-Ship
+
+Game Class (main runnable) w/ visuals & winningcondition/score
+-Player Class
+--AI Class
+
+
+Player
+-Offensive Board
+-Defenseive Board
+-List of Moves Made
+
+Tile
+-Coordinate
+-Result/Symbol
