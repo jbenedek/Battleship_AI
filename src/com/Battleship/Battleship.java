@@ -81,6 +81,7 @@ public class Battleship {
 
 	public static void main(String[] args) {
 		try {
+			
 			preGame();
 			postGame();
 		} catch (InterruptedException e) {
@@ -91,16 +92,16 @@ public class Battleship {
 	
 	public static void preGame() throws InterruptedException {
 		System.out.println("Welcome to BattleShip. This was created by Jeremy Benedek and Kyle Lemmel for B351 - Intro to AI");
-		System.out.println("Would you like to play: \n1. Human vs. Human \n2. Human vs. AI \n3.AI vs AI?");
+		System.out.println("Would you like to play: \n1. Human vs. Human \n2. Human vs. AI \n3. AI vs AI?");
 		Scanner in = new Scanner(System.in);
 		GLOBAL_GAME_MODE = in.nextInt();
 		switch(GLOBAL_GAME_MODE) {
 		case 1:
 			GLOBAL_PLAYER_1 = new Player("Player 1");
-			GLOBAL_PLAYER_2 = new Player("Player 2"); //TODO
+			GLOBAL_PLAYER_2 = new Player("Player 2"); 
 			break;
 		case 2:
-			System.out.println("What difficulty would you like the Offensive AI to be?"); //TODO
+			System.out.println("What difficulty would you like the Offensive AI to be?"); 
 			GLOBAL_OFFENSIVE_DIFFICULTY = in.nextInt();
 			System.out.println("What difficulty would you like the Defensive AI to be?");
 			GLOBAL_DEFENSIVE_DIFFICULTY = in.nextInt();
@@ -121,7 +122,7 @@ public class Battleship {
 			break;
 		case -10:
 			GLOBAL_PLAYER_1 = new Player("Player 1", 1);
-			GLOBAL_PLAYER_2 = new Player("Player 2", 1); //TODO
+			GLOBAL_PLAYER_2 = new Player("Player 2", 1); 
 			break;
 		default:
 			System.out.println("I'm sorry, you entered an invalid input. Try again.");
@@ -133,9 +134,17 @@ public class Battleship {
 	}
 	
 	public static void postGame() {
+		PLAYER_ON_TURN *= -1; //We must revert the winner back, since we change the winner before the winner check
 		System.out.println("The game is over!!!!\n");
-		System.out.println("WHAT PLAYER WON??");//TODO
-		System.out.println("It took " + TOTAL_TURNS/2 + " moves to win.");
+		switch(PLAYER_ON_TURN) {
+		case 1:
+			System.out.println("Player 1 Wins!!!!!");
+			break;
+		case 2:
+			System.out.println("Player 2 Wins!!!!!!");
+			break;	
+		}
+		System.out.println("It took " + TOTAL_TURNS/2 + " moves to win."); //Turns increment on every fire, so divide by 2 to get moves made by one person
 		System.out.println("\n\nGame Options: \n" + GLOBAL_GAME_INSTANCE.toString());
 	}
 	

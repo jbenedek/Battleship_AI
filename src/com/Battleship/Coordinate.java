@@ -35,7 +35,16 @@ public class Coordinate {
 		this.y = Integer.parseInt(s.substring(1) );
 	}
 
-	public int getSingleValueRepresentation() {
+	/**
+	 * A1 = 11
+	 * A2 = 12
+	 * A10 = 110
+	 * B1 = 21
+	 * J1 = 101
+	 * J10 = 1010
+	 * @return
+	 */
+	public int getSingleValueRepresentation() { 
 		String sx = x + "";
 		String sy = y + "";
 		String combo = sx + sy;

@@ -1,9 +1,7 @@
 package com.Battleship;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * 
@@ -234,11 +232,14 @@ public class Board {
 	}
 	
 	/**
-	 * Finds what ship has the coordinate, and changes the symbol to a hit.
+	 * Finds what ship has the coordinate, and changes the symbol to a hit. Checks for sinks
 	 * Adds symbol X
+	 * 
+	 * Waits an extra second if there is a hit
 	 * @param c
+	 * @throws InterruptedException 
 	 */
-	public void addHit(Coordinate c) {
+	public void addHit(Coordinate c) throws InterruptedException {
 		for (Tile t : carrier.getTiles()) {
 			if(t.getCoord().equals(c)) {
 				t.setSymbol("X");
@@ -246,6 +247,7 @@ public class Board {
 				if( carrier.checkIfSunk() ) { //SHIP SUNK
 					shipsSunk.add(carrier);
 					System.out.println("\nYou sunk the opponent's CARRIER (5)");
+					Thread.sleep(1000);
 				}
 			}
 		}
@@ -256,6 +258,7 @@ public class Board {
 				if( battleship.checkIfSunk() ) { //SHIP SUNK
 					shipsSunk.add(battleship);
 					System.out.println("\nYou sunk the opponent's BATTLESHIP (4)");
+					Thread.sleep(1000);
 
 				}
 			}	
@@ -267,6 +270,7 @@ public class Board {
 				if( cruiser.checkIfSunk() ) { //SHIP SUNK
 					shipsSunk.add(cruiser);
 					System.out.println("\nYou sunk the opponent's CRUISER (3)");
+					Thread.sleep(1000);
 
 				}
 			}		}
@@ -277,6 +281,7 @@ public class Board {
 				if( submarine.checkIfSunk() ) { //SHIP SUNK
 					shipsSunk.add(submarine);
 					System.out.println("\nYou sunk the opponent's SUBMARINE (3)");
+					Thread.sleep(1000);
 
 				}
 			}		}
@@ -287,6 +292,7 @@ public class Board {
 				if( destroyer.checkIfSunk() ) { //SHIP SUNK
 					shipsSunk.add(destroyer);
 					System.out.println("\nYou sunk the opponent's DESTROYER (2)");
+					Thread.sleep(1000);
 
 				}
 			}		}
@@ -294,53 +300,26 @@ public class Board {
 
 	}
 	
-	public void displaySingle() {
-		List<Coordinate> ships = new ArrayList<>();
+	public List<Tile> getAllShipCoords(){
+		List<Tile> ships = new ArrayList<>();
 		for (Tile t : carrier.getTiles()) {
-			ships.add(t.getCoord());
+			ships.add(t);
 		}
 		for (Tile t : battleship.getTiles()) {
-			ships.add(t.getCoord());
+			ships.add(t);
 		}
 		for (Tile t : cruiser.getTiles()) {
-			ships.add(t.getCoord());
+			ships.add(t);
 		}
 		for (Tile t : submarine.getTiles()) {
-			ships.add(t.getCoord());
+			ships.add(t);
 		}
 		for (Tile t : destroyer.getTiles()) {
-			ships.add(t.getCoord());
+			ships.add(t);
 		}
-		
-		System.out.printf("		A	B	C	D	E	F	G	H	I	J");
-		
-	//	System.out.printf("1	%c	%c	%c	%c	%c	%c	%c	%c	%c	%c", a1, b1, c1, d1, e1, f1, g1, h1, i1, j1);
+		return ships;
 	}
 	
-
-	//TODO
-	public void displayDouble() {
-		List<Coordinate> ships = new ArrayList<>();
-		for (Tile t : carrier.getTiles()) {
-			ships.add(t.getCoord());
-		}
-		for (Tile t : battleship.getTiles()) {
-			ships.add(t.getCoord());
-		}
-		for (Tile t : cruiser.getTiles()) {
-			ships.add(t.getCoord());
-		}
-		for (Tile t : submarine.getTiles()) {
-			ships.add(t.getCoord());
-		}
-		for (Tile t : destroyer.getTiles()) {
-			ships.add(t.getCoord());
-		}
-		
-		System.out.printf("		A	B	C	D	E	F	G	H	I	J");
-		
-	//	System.out.printf("1	%c	%c	%c	%c	%c	%c	%c	%c	%c	%c", a1, b1, c1, d1, e1, f1, g1, h1, i1, j1);
-	}
 	@Override
 	public String toString() {
 		List<Coordinate> ships = new ArrayList<>();
@@ -359,60 +338,20 @@ public class Board {
 		for (Tile t : destroyer.getTiles()) {
 			ships.add(t.getCoord());
 		}
-		
-		/*List<Coordinate> hits = new ArrayList<>();
-		for (Tile t : carrier.getTiles()) {
-			if(t.getSymbol().equals("X")) {
-				hits.add(t.getCoord());
-			}
-		}
-		for (Tile t : battleship.getTiles()) {
-			if(t.getSymbol().equals("X")) {
-				hits.add(t.getCoord());
-			}
-		}
-		for (Tile t : cruiser.getTiles()) {
-			if(t.getSymbol().equals("X")) {
-				hits.add(t.getCoord());
-			}
-		}
-		for (Tile t : submarine.getTiles()) {
-			if(t.getSymbol().equals("X")) {
-				hits.add(t.getCoord());
-			}
-		}
-		for (Tile t : destroyer.getTiles()) {
-			if(t.getSymbol().equals("X")) {
-				hits.add(t.getCoord());
-			}
-		}
-		*/
-		
-		
+				
 		return "All Ship Tiles: " + ships.toString() + "\nMissedTiles: " + listOfMisses.toString() + "\nHits: " + listOfHits.toString();
 	}
 	
-	
-	
-	public static void clearDisplay() {
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-	}
-	public static void delay() {
-		clearDisplay();
-		System.out.println("Press ENTER to contine......");
-		try {
-			System.in.read();
-		} catch (IOException e) {
-		}
-		clearDisplay();
-		
-	}
 	public List<Ship> getShipsSunk() {
 		return shipsSunk;
 	}
-	
-	//Todo: getter/setters/constructors, prettyprint, Winning Condition, Board evaluation
-	
-
-	
+	/**
+	 * @return the listOfMisses
+	 */
+	public List<Tile> getListOfMisses() {
+		return listOfMisses;
+	}
+	public List<Tile> getListOfHits() {
+		return listOfHits;
+	}	
 }

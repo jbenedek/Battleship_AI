@@ -1,7 +1,5 @@
 package com.Battleship;
 
-import java.util.Scanner;
-
 public class Game {
 	
 	public Game() throws InterruptedException {
@@ -13,13 +11,17 @@ public class Game {
 	 * @throws InterruptedException 
 	 */
 	public void startFiring() throws InterruptedException {
-		Board.clearDisplay();
+		Utils.clearDisplay();
 		String coordToFire;
 		while(gameInProgress()) {
 			Battleship.TOTAL_TURNS += 1;
 			switch(Battleship.PLAYER_ON_TURN) {
 			case 1: //PLAYER 1
-				Battleship.GLOBAL_PLAYER_1.displayBoards();
+				System.out.println(Battleship.GLOBAL_PLAYER_1.getName() + "'s turn!");
+				System.out.println("               Player 1 has sunk: " + Battleship.GLOBAL_PLAYER_2.getDefensive().getShipsSunk().size() + "                                 Player 2 has sunk: " + Battleship.GLOBAL_PLAYER_1.getDefensive().getShipsSunk().size() );
+				Utils u = new Utils(Battleship.GLOBAL_PLAYER_1.getOffensive(), Battleship.GLOBAL_PLAYER_1.getDefensive());
+				u.printDoubleBoard();
+				//Battleship.GLOBAL_PLAYER_1.displayBoards();
 				System.out.print(Battleship.GLOBAL_PLAYER_1.getName() );
 				coordToFire = Battleship.GLOBAL_PLAYER_1.getCoordToFire();
 				Coordinate fire = new Coordinate(coordToFire); //TODO VALIDATION
@@ -36,7 +38,11 @@ public class Game {
 				}
 				break;
 			case -1: //PLAYER 2
-				Battleship.GLOBAL_PLAYER_2.displayBoards();
+				System.out.println(Battleship.GLOBAL_PLAYER_2.getName() + "'s turn!");
+				System.out.println("               Player 1 has sunk: " + Battleship.GLOBAL_PLAYER_2.getDefensive().getShipsSunk().size() + "                                 Player 2 has sunk: " + Battleship.GLOBAL_PLAYER_1.getDefensive().getShipsSunk().size() );
+				Utils u2 = new Utils(Battleship.GLOBAL_PLAYER_2.getOffensive(), Battleship.GLOBAL_PLAYER_2.getDefensive());
+				u2.printDoubleBoard();
+				//Battleship.GLOBAL_PLAYER_2.displayBoards();
 				System.out.print(Battleship.GLOBAL_PLAYER_2.getName() );
 				coordToFire = Battleship.GLOBAL_PLAYER_2.getCoordToFire();
 				Coordinate fire2 = new Coordinate(coordToFire); //TODO VALIDATION
@@ -56,7 +62,7 @@ public class Game {
 			
 			
 			Battleship.PLAYER_ON_TURN = Battleship.PLAYER_ON_TURN * -1;
-			Board.delay();			
+			Utils.delay();			
 		}
 	}
 	
