@@ -21,6 +21,31 @@ public class Tile {
 		this.symbol = symbol;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((coord == null) ? 0 : coord.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Tile other = (Tile) obj;
+		if (coord == null) {
+			if (other.coord != null)
+				return false;
+		} else if (!coord.equals(other.coord))
+			return false;
+		return true;
+	}
+
 	public Coordinate getCoord() {
 		return coord;
 	}

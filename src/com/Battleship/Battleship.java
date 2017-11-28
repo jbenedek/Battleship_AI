@@ -1,5 +1,8 @@
 package com.Battleship;
 
+//This is the main class for Battle ship. 
+//By Jeremy Benedek and Kyle Lemmel
+
 import java.util.Scanner;
 
 public class Battleship {
@@ -101,21 +104,21 @@ public class Battleship {
 			GLOBAL_PLAYER_2 = new Player("Player 2"); 
 			break;
 		case 2:
-			System.out.println("What difficulty would you like the Offensive AI to be?"); 
+			System.out.println("What difficulty would you like the Offensive AI to be? \n1.Easy\n2.Medium\n3.Hard\n4.Combo of Medium and Hard\n"); 
 			GLOBAL_OFFENSIVE_DIFFICULTY = in.nextInt();
-			System.out.println("What difficulty would you like the Defensive AI to be?");
+			System.out.println("What would you like the Defensive AI to be? \n1.Random\n2.Cluster\n3.Spread");
 			GLOBAL_DEFENSIVE_DIFFICULTY = in.nextInt();
 			GLOBAL_PLAYER_1 = new Player("Player 1");
 			GLOBAL_PLAYER_2 = new AI("Player 2");
 			break;
 		case 3:
-			System.out.println("What difficulty would you like the Player 1 Offensive AI to be?"); //TODO
+			System.out.println("What difficulty would you like the Player 1 Offensive AI to be? \n1.Easy\n2.Medium\n3.Hard\n4.Combo of Medium and Hard\n"); //TODO
 			GLOBAL_OFFENSIVE_DIFFICULTY = in.nextInt();
-			System.out.println("What difficulty would you like the Player 1 Defensive AI to be?");
+			System.out.println("What would you like the Defensive AI for Player 1 to be? \n1.Random\n2.Cluster\n3.Spread");
 			GLOBAL_DEFENSIVE_DIFFICULTY = in.nextInt();
-			System.out.println("What difficulty would you like the Player 2 Offensive AI to be?"); //TODO
+			System.out.println("What difficulty would you like the Player 2 Offensive AI to be? \n1.Easy\n2.Medium\n3.Hard\n4.Combo of Medium and Hard\n"); //TODO
 			GLOBAL_OFFENSIVE_DIFFICULTY_2 = in.nextInt();
-			System.out.println("What difficulty would you like the Player 2 Defensive AI to be?");
+			System.out.println("What would you like the Defensive AI for Player 2 to be? \n1.Random\n2.Cluster\n3.Spread");
 			GLOBAL_DEFENSIVE_DIFFICULTY_2 = in.nextInt();
 			GLOBAL_PLAYER_1 = new AI("Player 1");
 			GLOBAL_PLAYER_2 = new AI("Player 2");

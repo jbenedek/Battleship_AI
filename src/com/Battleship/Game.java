@@ -34,7 +34,7 @@ public class Game {
 				else {//THIS IS A MISS
 					Battleship.GLOBAL_PLAYER_1.getOffensive().addMiss(fire);
 					System.out.println("MISS at " + fire.toPrettyString() );
-					Thread.sleep(2000);
+					Thread.sleep(2000); //TODO
 				}
 				break;
 			case -1: //PLAYER 2

@@ -7,6 +7,9 @@ public class Player {
 	protected Board defensive;
 	protected String name;
 	
+	public Player() {
+		
+	}
 	public Player(String name) {
 		offensive = new Board();
 		defensive = new Board();
@@ -111,7 +114,7 @@ public class Player {
 		System.out.println("KEY:        O: SHIP           X: HIT SHIP            -:MISSED SHOT  BLANK has yet to be explored");
 
 	}
-	public String getCoordToFire() {
+	public String getCoordToFire() throws InterruptedException {
 		System.out.print(", it is your turn to fire. Please enter a coordinate (in form A1, D3, J10, etc): \n");
 		Scanner in = new Scanner(System.in);
 		String s = in.next();

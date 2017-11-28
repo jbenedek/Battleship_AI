@@ -45,6 +45,8 @@ public class Coordinate {
 	 * @return
 	 */
 	public int getSingleValueRepresentation() { 
+		if (x==-1) {return 11;}
+		if(y==-1) {return 11;}
 		String sx = x + "";
 		String sy = y + "";
 		String combo = sx + sy;

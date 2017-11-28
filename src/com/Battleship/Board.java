@@ -20,11 +20,11 @@ import java.util.List;
  */
 public class Board {
 	
-	private Ship carrier = new Ship(5, "Carrier", new ArrayList<Tile>());
-	private Ship battleship = new Ship(4, "Battleship", new ArrayList<Tile>());
-	private Ship cruiser = new Ship(3, "Cruiser", new ArrayList<Tile>());
-	private Ship submarine = new Ship(3, "Submarine", new ArrayList<Tile>());
-	private Ship destroyer = new Ship(2, "Destroyer", new ArrayList<Tile>());
+	public Ship carrier = new Ship(5, "Carrier", new ArrayList<Tile>());
+	public Ship battleship = new Ship(4, "Battleship", new ArrayList<Tile>());
+	public Ship cruiser = new Ship(3, "Cruiser", new ArrayList<Tile>());
+	public Ship submarine = new Ship(3, "Submarine", new ArrayList<Tile>());
+	public Ship destroyer = new Ship(2, "Destroyer", new ArrayList<Tile>());
 	private List<Tile> listOfMisses = new ArrayList<Tile>();
 	private List<Tile> listOfHits = new ArrayList<Tile>();
 	
